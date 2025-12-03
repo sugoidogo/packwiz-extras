@@ -11,7 +11,7 @@ export default async function download(url: string, path: string) {
         process.exit(1)
     }
     const reader = response.body?.getReader()
-    const writeStream = fs.createWriteStream(path, 'binary')
+    const writeStream = fs.createWriteStream(path)
     const totalSize = Number(response.headers.get('content-length'))
     let receivedSize = 0
     let chunk = await reader!.read()
