@@ -447,7 +447,7 @@ export async function cfDetect(pack_url: string, cfApiKey: string, size_min = 40
                     }
                 }
                 result.delete.push(file_url)
-                result.write[match.file.displayName.toLowerCase().replace(' ', '-')] = mod
+                result.write[index_dir+'/'+match.file.displayName.toLowerCase().replaceAll(' ', '-')] = mod
                 break
             }
         }
@@ -533,7 +533,7 @@ export async function mrDetect(pack_url: string, mrApiKey?: string, size_min = 4
             }
         }
         result.delete.push(file_url)
-        result.write[match.file.displayName.toLowerCase().replace(' ', '-')] = mod
+        result.write[index_dir + '/' +project.title.toLowerCase().replaceAll(' ', '-')] = mod
     }
     console.log(`found ${result.delete.length} matching files`)
     return result
