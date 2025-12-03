@@ -1,5 +1,5 @@
 {
-  "name": "packwiz-extras",
+  "name": "packwiz-extras-lib",
   "version": "0.2.0",
   "description": "ts/js library for node and web for working with packwiz modpacks",
   "keywords": [
