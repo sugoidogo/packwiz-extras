@@ -1,7 +1,7 @@
 import spawnSync from "./spawnSync.ts"
 
 const deno = true // works, but produces largest executables
-const bun = false // error: https://api.curseforge.com/v1/fingerprints: Forbidden
+const bun = false // https://github.com/oven-sh/bun/issues/7180#issuecomment-3606325674
 const pkg = false // smallest executables but don't work
 
 if (deno) {

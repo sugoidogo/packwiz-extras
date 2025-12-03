@@ -5,7 +5,7 @@ import { performance } from 'node:perf_hooks'
 
 const node = true // supported runtime
 const deno = true // primary runtime
-const bun = true // would like to support this runtime, but keep getting errors
+const bun = false // https://github.com/oven-sh/bun/issues/7180#issuecomment-3606325674
 
 await download('https://mediafilez.forgecdn.net/files/7223/56/All%20the%20Mods%2010-5.1.zip', 'modpack.zip')
 if (fs.existsSync('test')) fs.rmSync('test', { recursive: true })
