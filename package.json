@@ -26,7 +26,7 @@
     "test": "node scripts/test.ts",
     "prepack": "tsc -p src/lib/tsconfig.json",
     "compile": "node scripts/compile.ts",
-    "docs": "typedoc src/lib/packwiz.ts"
+    "docs": "typedoc src/lib/packwiz.ts --tsconfig src/lib/tsconfig.json"
   },
   "dependencies": {
     "commander": "^14.0.2",

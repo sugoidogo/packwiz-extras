@@ -235,7 +235,7 @@ export interface Mod {
         "hash-format": HashFormat
         /** The hash of the specified file, as a string. @see {@link Hash} */
         "hash": Hash
-        /** The URL to download the mod from. @see {@link URL} */
+        /** The URL to download the mod from. @see {@link Url} */
         "url"?: Url
         "mode"?: string
     }
