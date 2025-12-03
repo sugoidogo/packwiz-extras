@@ -132,15 +132,15 @@ export interface Pack {
          * defaulting to a folder based on the category
          * (mods, resourcepacks, etc; if the category is unknown the current directory is used)
          */
-        "meta-folder"?: string
+        "meta-folder"?: Path
         /** deprecated; aliassed to meta-folder */
-        "mods-folder"?: string
+        "mods-folder"?: Path
         /**
          * The base folder from which meta-folder will be resolved,
          * defaulting to the current directory
          * (so you can put all mods/etc in a subfolder while still using the default behaviour)
          */
-        "meta-folder-base"?: string
+        "meta-folder-base"?: Path
         /**
          * If this is set to true,
          * packwiz will not generate hashes of local files,
@@ -156,7 +156,7 @@ export interface Pack {
          * and must be set to add datapacks
          * (that are not bundled as mods)
          */
-        "datapack-folder"?: string
+        "datapack-folder"?: Path
     }
 }
 /**
@@ -185,7 +185,7 @@ export interface Index {
          * Not compatible with metafile,
          * and may not be very well supported.
          */
-        "alias"?: string
+        "alias"?: Path
         /**
          * The hash format for the hash of the specified file.
          * Defaults to the hash format specified in the index -
@@ -305,9 +305,11 @@ export interface Mod {
         }
     }
 }
-
+/** Return type of all exported functions, describing how to apply the function result */
 export interface Result {
+    /** files to be deleted */
     delete?: Path[]
+    /** files to be written with TOML data */
     write?: { [key: Path]: Mod | Index | Pack }
 }
 
