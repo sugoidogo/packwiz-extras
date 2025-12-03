@@ -4,10 +4,15 @@ on:
   push:
     tags:
       - "*"
-  workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -25,10 +30,24 @@ jobs:
         run: |
           npm install
           npm run compile
+          npm run docs
+          npm pack
+          mv packwiz-extras-lib*.tgz packwiz-extras-lib.tgz
           git log $(git describe --tags --abbrev=0 HEAD~1)..HEAD --oneline > changelog.txt
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           make_latest: true
           body_path: changelog.txt
-          files: bin/*/*
+          files: |
+            packwiz-extras-lib.tgz
+            bin/*/*
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

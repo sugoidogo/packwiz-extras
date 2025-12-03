@@ -3,10 +3,11 @@
         "target": "es2022",
         "module": "es2022",
         "moduleResolution": "node",
+        "lib": ["ESNext"],
+        "noEmit": true,
         "allowImportingTsExtensions": true,
-        "noEmit": true
-    },
-    "include": [
-        "src/"
-    ]
+        "types": [
+            "node"
+        ]
+    }
 }

@@ -1,7 +1,7 @@
 import spawnSync from "./spawnSync.ts"
 
 const deno = true // works, but produces largest executables
-const bun = false // has weird issues
+const bun = false // error: https://api.curseforge.com/v1/fingerprints: Forbidden
 const pkg = false // smallest executables but don't work
 
 if (deno) {
@@ -17,7 +17,7 @@ if (deno) {
         spawnSync('deno', [
             'compile', '--allow-all', '--target', target,
             '--output', 'bin/deno/packwiz-extras-' + target,
-            '--no-check', 'src/cli.ts'
+            '--no-check', 'src/cli/cli.ts'
         ], { stdio: 'inherit', shell: true })
     }
 }
@@ -37,7 +37,7 @@ if (bun) {
             'build', '--compile',
             '--target', target,
             '--outfile', 'bin/bun/packwiz-extras-' + target,
-            'src/cli.ts'
+            'src/cli/cli.ts'
         ], { stdio: 'inherit', shell: true })
     }
 }
@@ -57,6 +57,6 @@ if (pkg) {
         //'--sea', // doesn't build with this
         '--compress', 'GZip',
         //'--compress', 'Brotli', // same size as GZip and the internet says GZip is better
-        'src/cli.ts'
+        'src/cli/cli.ts'
     ], { stdio: 'inherit', shell: true })
 }

@@ -1,5 +1,8 @@
 node_modules
-bin
-.env
-modpack.zip
 test
+*.zip
+dist
+.env
+*.tgz
+docs
+bin
