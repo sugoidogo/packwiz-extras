@@ -370,7 +370,12 @@ function dirname(path: string) {
     path = path_segments.join('/')
     return path
 }
-
+/**
+ * detect files availible on curseforge
+ * @param pack_url url or path to the pack.toml file
+ * @param cfApiKey curseforge api key
+ * @param size_min minimum size for a file to be checked
+ */
 export async function cfDetect(pack_url: string, cfApiKey: string, size_min = 4096): Promise<Result> {
     console.log('loading pack')
     const pack = await fetch_toml(pack_url) as Pack
@@ -448,7 +453,13 @@ export async function cfDetect(pack_url: string, cfApiKey: string, size_min = 40
     console.log(`found ${result.delete.length} matching files`)
     return result
 }
-
+/**
+ * detect files availible on modrinth
+ * @param pack_url url or path to the pack.toml file
+ * @param mrApiKey modrinth api key
+ * @param size_min minimum size for a file to be checked
+ * @returns 
+ */
 export async function mrDetect(pack_url: string, mrApiKey?: string, size_min = 4096): Promise<Result> {
     console.log('loading pack')
     const pack = await fetch_toml(pack_url) as Pack
@@ -525,7 +536,11 @@ export async function mrDetect(pack_url: string, mrApiKey?: string, size_min = 4
     console.log(`found ${result.delete.length} matching files`)
     return result
 }
-
+/**
+ * find download urls for curseforge files
+ * @param pack_url url or path to pack.toml
+ * @param cfApiKey curseforge api key
+ */
 export async function cfUrl(pack_url: string, cfApiKey: string): Promise<Result> {
     console.log('loading pack')
     const pack = await fetch_toml(pack_url) as Pack
@@ -573,7 +588,11 @@ export async function cfUrl(pack_url: string, cfApiKey: string): Promise<Result>
     console.log(`found ${Object.keys(result.write).length} download urls`)
     return result
 }
-
+/**
+ * find curseforge files that are availible on modrinth and merge their metadata
+ * @param pack_url url or path to pack.toml
+ * @param mrApiKey modrinth api key
+ */
 export async function mrMerge(pack_url: string, mrApiKey?: string): Promise<Result> {
     console.log('loading pack')
     const pack = await fetch_toml(pack_url) as Pack
